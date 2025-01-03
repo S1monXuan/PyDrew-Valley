@@ -40,6 +40,14 @@ class Player(pygame.sprite.Sprite):
         self.tool_index = 0
         self.selected_tool = self.tools[self.tool_index]
 
+        # Inventory
+        self.item_inventory = {
+            'wood': 0,
+            'apple': 0,
+            'corn': 0,
+            'tomato': 0
+        }
+
         # seeds
 
         self.seeds = ['corn', 'tomato']
@@ -61,7 +69,7 @@ class Player(pygame.sprite.Sprite):
             for tree in self.tree_sprites.sprites():
                 if tree.rect.collidepoint(self.target_pos):
                     tree.damage()
-                    
+
         if self.selected_tool == 'water':
             pass
     def use_seed(self):
@@ -205,3 +213,4 @@ class Player(pygame.sprite.Sprite):
 
         self.move(dt)
         self.animate(dt)
+        print(self.item_inventory)
